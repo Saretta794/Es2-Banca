@@ -1,0 +1,9 @@
+<!-- dopo aver salvato l'array di dati come valore della proprietà transazioni nella classe TransazioniListaComponent, ho inserito qui, nell'html il componente transazione-item che diviene così figlio di transazioni-lista -> ho ciclato il componente transazione-item per generarne tanti quanti sono gli oggetti del mio array di dati + grazie all'attributo [transazione] avviene il passaggio dei dati dal componente genitore (transazioni-lista) al componente figlio (transazione-item) e dunque viene genrato l'html di cui nell'html del figlio + -->
+<h1 class="text-center mb-4">Transazioni</h1>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    <app-transazione-item
+    *ngFor="let t of transazioni"
+    [transazione]="t"
+    (onRichiestaEliminazione)="rimuoviTransazione($event)"></app-transazione-item><!--Quando parte l'allarme onRichiestaEliminazione, il componente transazione-item risponde con la funzione rimuoviTransazione() a cui viene passato l'allegato all'evento = $event (che sarà di tipo transazione)-->
+
+</div>

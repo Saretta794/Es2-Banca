@@ -1,0 +1,16 @@
+<!--ho creato la struttura html che mi permettesse di visualizzare un oggetto dell'array di dati, ovvero una transazione -> la condizione ngIf fa si che l'html venga generato solo se il dato arriva + [ngClass] e la direttiva grazie alla quale aggiungo classi secondo certe condizioni da me definite + tramite le interpolazioni attingo ai valori delle proprietà dei dati ricevuti + le pipe mi hanno permesso di mostare le date in formeto data e le cifre delle transazioni con la valuta-->
+
+<div class="card" *ngIf="transazione" [ngClass]="{'text-bg-success':transazione.type == 'invoice', 'text-bg-secondary':transazione.type == 'withdrawal'}">
+    <div class="card-header">{{transazione.business}}</div>
+    <div class="card-body">
+      <p>{{transazione.name}}</p>
+      <p>Account: {{transazione.account}}</p>
+      <p>Date: {{transazione.date | date}}</p>
+      <p>Type: {{transazione.type}}</p>
+      <p [ngClass]="{'text-bg-warning': transazione.amount > 700}"> Amount: {{transazione.amount | currency}}</p>
+
+      <!--il (click) innesca la funzione richiedieliminazione, ovvero "l'allarme" -->
+      <button type="button" class="btn btn-danger" (click)="richiediEliminazione()"><i class="bi bi-trash"></i></button>
+
+    </div>
+  </div>
